@@ -1,0 +1,32 @@
+.panel-sort-container {
+  padding: 1rem;
+  border-bottom: 1px solid var(--bc-dim);
+}
+.panel-sort-table-header {
+  font-size: var(--sm);
+}
+.sort-by i {
+  font-size: var(--lg);
+  position: relative;
+  top: 6px;
+  right: 4px;
+}
+.sort-by a {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  color: var(--dim);
+}
+.sort-by a:hover {
+  color: var(--link);
+}
+.sort-by.active a {
+  color: var(--highlight);
+}
+.sort-by.asc .material-icons {
+  color: var(--highlight);
+}
+.sort-by.desc .material-icons {
+  transform: rotate(180deg);
+  color: var(--highlight);
+}

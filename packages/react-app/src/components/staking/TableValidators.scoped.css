@@ -1,0 +1,159 @@
+@media screen and (max-width: 550px) {
+  .data-table td {
+    overflow: hidden;
+  }
+
+  .data-table__row__info {
+    max-width: 22rem;
+  }
+}
+
+.flip-list-move {
+  transition: transform 0.3s;
+}
+
+.data-table >>> th:first-child {
+  width: 5%;
+  color: var(--dim);
+  font-size: var(--sm);
+}
+
+.data-table >>> th:nth-child(2) {
+  width: 10%;
+  color: var(--dim);
+  font-size: var(--sm);
+}
+
+.data-table >>> th:nth-child(3) {
+  width: 50%;
+}
+
+.sortingOptions {
+  margin: 0.5rem 1rem;
+}
+
+.sortingOptions li.active {
+  color: var(--highlight);
+}
+
+.sortingOptions li {
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sorting-check {
+  justify-content: space-between;
+}
+
+.sorting-check.inactive {
+  color: var(--app-bg);
+}
+
+.sortingOptions .material-icons {
+  font-size: 22px;
+  width: 2rem;
+  vertical-align: text-bottom;
+}
+
+.shrinked .panel-sort-container {
+  visibility: collapse;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .sortingOptions {
+    display: none;
+  }
+
+  .shrinked .panel-sort-container {
+    visibility: initial;
+  }
+}
+
+.li-validator {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--bc-dim);
+  border-radius: 0.25rem;
+}
+
+.validator-info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  text-overflow: ellipsis;
+}
+
+.li-validator h4,
+.li-validator h5 {
+  font-size: var(--sm);
+  display: inline-block;
+}
+
+.li-validator h5 {
+  padding-left: 0.5rem;
+  color: var(--success);
+}
+
+.li-validator:hover {
+  cursor: pointer;
+  background: var(--app-fg-hover);
+  color: var(--bright);
+}
+
+.li-validator-name {
+  font-size: 1rem;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--bright);
+  display: inline-block;
+  max-width: 20rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.li-validator-image {
+  border-radius: 0.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  border: 1px solid var(--bc-dim);
+}
+
+.validator-status {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 600;
+  border: 2px solid;
+  padding: 2px 4px;
+  border-radius: 0.25rem;
+}
+
+.validator-status.inactive {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+
+.validator-status.active {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+@media screen and (max-width: 768px) {
+  .li-validator-name {
+    max-width: 11rem;
+  }
+}

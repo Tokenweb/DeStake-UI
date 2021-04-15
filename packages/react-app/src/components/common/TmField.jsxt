@@ -1,0 +1,207 @@
+import React from 'react'
+import { css } from '@emotion/react'
+import { type } from 'os'
+
+const TmField = ({type, value, placeholder, size, options, change, keyup, keydown, isDisabled, update, options}) => {
+  const className = css`
+    input[type="checkbox"] {
+      margin: 0.3rem 0.3rem 0.5rem 0;
+      vertical-align: middle;
+    }
+
+    .tm-field {
+      background: var(--input-bg);
+      border: 2px solid var(--input-bc);
+      border-radius: 0;
+      color: var(--txt);
+      display: block;
+      font-size: 14px;
+      min-width: 0;
+      padding: 0.5rem 0.5rem;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .tm-field-addon {
+      background: var(--input-bg);
+      border: 2px solid var(--input-bc);
+      border-radius: 0;
+      color: var(--txt);
+      display: block;
+      font-size: 14px;
+      min-width: 0;
+      padding: 0.5rem 0.5rem;
+      width: 100%;
+      -webkit-appearance: none;
+      border-top-left-radius: 0.25rem !important;
+      border-bottom-left-radius: 0.25rem !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    .tm-field::placeholder {
+      color: var(--dim);
+    }
+
+    .tm-field:disabled {
+      background: var(--app-fg);
+      border: 2px solid black;
+      box-shadow: none;
+      color: var(--dim);
+      text-shadow: none;
+    }
+
+    .tm-field:focus {
+      border: 2px solid var(--link);
+      box-shadow: none;
+      outline: none;
+    }
+
+    input.tm-field {
+      height: 2rem;
+    }
+
+    textarea.tm-field {
+      height: 4rem;
+      resize: vertical;
+    }
+
+    .tm-select {
+      position: relative;
+    }
+
+    .tm-select select {
+      appearance: none;
+      background: var(--input-bg);
+      border-radius: 0;
+      color: var(--txt, #333);
+      padding-right: 2rem;
+      width: 100%;
+    }
+
+    .tm-select select:invalid {
+      color: dim;
+    }
+
+    .tm-select select option {
+      background: var(--app-bg);
+      color: var(--txt);
+      font-family: var(--sans);
+    }
+
+    .tm-select .tm-field-select-addon {
+      align-items: center;
+      background: var(--input-bg);
+      border-left: 1px solid var(--input-bc);
+      box-sizing: border-box;
+      color: var(--txt, #333);
+      display: flex;
+      height: 2rem;
+      justify-content: center;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 2rem;
+    }
+
+    .input-group-addon {
+      background: var(--input-bg);
+      border: 2px solid var(--input-bc);
+      border-left: none;
+      color: var(--txt);
+      font-size: 0.75rem;
+      line-height: 1.875rem;
+      padding: 0 0.5rem;
+    }
+
+    @media screen and (min-width: 360px) {
+      .input-group-addon {
+        font-size: 1rem;
+      }
+    }
+
+    .tm-field.tm-field-size-sm {
+      font-size: 0.75rem;
+      height: 1.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .tm-field.tm-field-size-lg {
+      font-size: 1.125rem;
+      height: 3rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  `
+
+  const options = [
+    <option value disabled="disabled" selected="selected" hidden="hidden">
+      { selectPlaceholder }
+    </option>
+  ]
+
+  let field = null
+  if (type === select) {
+    field = (
+      <div className="tm-select">
+        <select
+          className="css"
+          value={value}
+          disabled={isDisabled}
+          onChange={onChange}
+        >
+
+          <template>
+            <option
+              v-for="(option, index) in resolvedOptions"
+              :key="index"
+              :value="option.value"
+            >
+              {{ option.key }}
+            </option>
+          </template>
+        </select>
+        <div className="tm-field-select-addon">
+          <i className="material-icons notranslate">arrow_drop_down</i>
+        </div>
+      </div>
+    )
+  } else if () {
+
+  }
+  return (
+    <div className={className.styles}>
+
+
+  <textarea
+    v-else-if="type === 'textarea'"
+    className="css"
+    :placeholder="placeholder"
+    :value="value"
+    @change="onChange"
+    @keyup="onKeyup"
+    @keydown="onKeydown"
+    @input="updateValue($event.target.value)"
+  />
+
+  <input
+    v-else
+    ref="numTextInput"
+    :type="type"
+    :className="css"
+    :placeholder="placeholder"
+    :value="value"
+    step="0.000001"
+    :disabled="isDisabled"
+    @change="onChange"
+    @keyup="onKeyup"
+    @keydown="onKeydown"
+    @input="updateValue($event.target.value)"
+  />
+</template>
+
+  )
+}

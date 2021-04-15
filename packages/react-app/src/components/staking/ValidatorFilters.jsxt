@@ -1,0 +1,41 @@
+ <template>
+      <div className="filterContainer">
+        <TmField
+          v-model="searchTerm"
+          className="searchField"
+          placeholder="Search"
+        />
+        <div className="filterOptions">
+          <div className="toggles">
+            <TmBtn
+              value="Popular"
+              className="btn-radio"
+              :type="popularSort ? `active` : `secondary`"
+              @click.native="defaultSelectorsController(`popularSort`)"
+            />
+            <TmBtn
+              value="All"
+              className="btn-radio"
+              :type="allValidators ? `active` : `secondary`"
+              @click.native="defaultSelectorsController(`allValidators`)"
+            />
+            <TmBtn
+              value="Active"
+              className="btn-radio"
+              :type="activeOnly ? `active` : `secondary`"
+              @click.native="defaultSelectorsController(`activeOnly`)"
+            />
+          </div>
+          <div className="show-mobile-sorting">
+            <i
+              :className="{ active: showMobileSorting }"
+              className="filter-toggle material-icons notranslate"
+              @click="toggleMobileSorting"
+              >filter_list</i
+            >
+          </div>
+        </div>
+      </div>
+
+  
+    </template>
