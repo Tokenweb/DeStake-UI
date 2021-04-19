@@ -1771,7 +1771,7 @@
     "@ethersproject/properties" "^5.1.0"
     "@ethersproject/strings" "^5.1.0"
 
-"@graphprotocol/contracts@^1.1.0":
+"@graphprotocol/contracts@^1.1.0", "@graphprotocol/contracts@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@graphprotocol/contracts/-/contracts-1.2.0.tgz#72e080aa6a9eae874c8c63b45f74a0e36aa328ae"
   integrity sha512-h8BDkv/41f5oEYEs0z66lTZW+VfEENKGnFP7xVCavV3NOZxoTI5sPvlO+FPCtakeIWxUcWM8+ayx8hzIKrR+aQ==

@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import Modal from '../common/Modal'
+import { MdNotifications } from 'react-icons/md'
+import { WalletContext } from '../providers/WalletProvider'
 import UserAccountRow from './UserAccountRow'
 import UserMenuAddress from './UserMenuAddress'
 import Avatar from '../common/Avatar'
+import Web3Modal from "./Web3Modal";
 import './UserMenu.scoped.css'
 
 const LiAddress = ({ address, selectedAddress, selectAddress, selectedNetwork }) => {
@@ -39,7 +41,7 @@ const ModalContent = ({user, addresses, closeModal, signIn, signOut}) => {
         <span>Manage Addresses</span>
         <i className="material-icons">build</i>
       </div>
-      { user.userSignedIn ? 
+      { user && user.userSignedIn ? 
         <div>
           <div
             className="menu-list-item"
@@ -68,16 +70,26 @@ const ModalContent = ({user, addresses, closeModal, signIn, signOut}) => {
             className="menu-list-item outline"
             onClick={signIn}
           >
-            <span>Sign In</span>
-            <i className="material-icons">email</i>
+            <span>Sign In</span>            
           </div>
         </div>
       }
     </div>
   )
 }
-const UserMenu = ({user, address, sessionType, ledgerAddressError}) => {
+const UserMenu = ({user, sessionType, ledgerAddressError}) => {
   const [showModal, setShowModal] = useState(false)
+  const { wallet, setWallet, address } = useContext(WalletContext)
+
+  const onConnect = (provider) => {
+    setWallet({
+      walletType: 'METAMASK',
+      wallet: provider,
+      address: provider.selectedAddress,
+      provider,
+      GRTInstance: null
+    })
+  }
 
   return (
 
@@ -88,12 +100,12 @@ const UserMenu = ({user, address, sessionType, ledgerAddressError}) => {
             sessionType={sessionType}
           />
           :
-          <div>Connect</div>
+          <div>Sign In</div>
         }
         <Link to='/notifications'
           className="user-menu-icon-container notifications"
         >
-          <i className="material-icons">notifications</i>
+          <MdNotifications className="material-icons" />
         </Link>
         <div className="avatar-container" >
           { user &&
@@ -110,7 +122,7 @@ const UserMenu = ({user, address, sessionType, ledgerAddressError}) => {
           }
         </div>
           { showModal ?
-            <Modal content={<ModalContent />} isOpen={true} close={() => setShowModal(false)} />
+            <Web3Modal onConnect={onConnect} /> // <Modal content={<ModalContent addresses={[]} />} isOpen={true} close={() => setShowModal(false)} />
             :
             null
           }

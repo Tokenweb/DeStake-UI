@@ -51,7 +51,6 @@ const IndexersTable = () => {
 
   const updateSort = (orderBy: string, orderDirection: string) => refetch({skip: PAGINATION_STATE.skip, first: PAGINATION_STATE.first, orderBy, orderDirection })
 
-  console.log(`INdexers Table\n${JSON.stringify(indexers)}`)
   const body = loadingIndexers ? 
     <TmDataLoading {...loading} />
     :
