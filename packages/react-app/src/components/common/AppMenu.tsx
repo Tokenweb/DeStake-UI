@@ -1,21 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import './AppMenu.scoped.css'
 import { MdChevronRight } from 'react-icons/md'
+import { WalletContext } from '../providers/WalletProvider';
 
 const AppMenu = () => {
-  
+  const { address } = useContext(WalletContext)
   return (
     <div>
       <menu className="app-menu">
         <div>
-          <Link to={`/portfolio`}
-            className="app-menu-item hide-s"
-            title="Portfolio"
-          >
-            <h2 className="app-menu-title">Portfolio</h2>
-            <span className="material-icons notranslate"><MdChevronRight /></span>
-          </Link>
+          {address != null ?
+            <Link to={`/portfolio/${address}`}
+              className="app-menu-item hide-s"
+              title="Portfolio"
+            >
+              <h2 className="app-menu-title">Portfolio</h2>
+              <span className="material-icons notranslate"><MdChevronRight /></span>
+            </Link>
+            :
+            null
+          }
           <Link to={`/validators`}
             className="app-menu-item hide-s"
             title="Validators"
@@ -23,7 +28,7 @@ const AppMenu = () => {
             <h2 className="app-menu-title">Validators</h2>
             <span className="material-icons notranslate"><MdChevronRight /></span>
           </Link>
-          <Link to={`/prposals`}
+          <Link to={`/proposals`}
             className="app-menu-item hide-s"
             title="Proposals"
           >

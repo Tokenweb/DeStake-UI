@@ -3,12 +3,11 @@ import AppHeader from './AppHeader'
 import UserMenu from '../account/UserMenu'
 import TmDataLoading from './TmDataLoading'
 
-const AppPage = ({children, loading}: {children: any, loading: any}) => {
+const AppPage = ({children}: {children: any}) => {
   const themeClass = 'lunie-light'
 
   return (
     <div id="app" className={`${themeClass} page`}>
-      <TmDataLoading {...loading} />
       <AppHeader />
       <div id="app-content">
         <div id="bar-container">

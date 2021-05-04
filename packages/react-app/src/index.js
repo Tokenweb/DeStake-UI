@@ -6,11 +6,14 @@ import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { theGraphNetworkClient } from './utils/apolloClient'
+import WalletProvider from './components/providers/WalletProvider';
 
 ReactDOM.render((
   <ApolloProvider client={theGraphNetworkClient}>
     <HashRouter>
-      <App />
+      <WalletProvider>
+        <App />
+      </WalletProvider>
     </HashRouter>
   </ApolloProvider>),
   document.getElementById('root')

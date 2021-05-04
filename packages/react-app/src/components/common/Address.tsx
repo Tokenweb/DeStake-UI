@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { MdCheck, MdContentCopy} from 'react-icons/md'
 import { formatAddress } from '../../utils/address';
+import './Address.scoped.css'
 
 interface Props {
   address: string
@@ -21,7 +22,7 @@ const Address = ({ address, addressType, toolTipText }: Props) => {
   return (
     <CopyToClipboard text={address}
       onCopy={handleCopy}
-      className="address"
+      className="address copyable-address"
     >
       <span>
         <div className="address-section">

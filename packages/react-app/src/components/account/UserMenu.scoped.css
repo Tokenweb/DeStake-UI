@@ -29,7 +29,7 @@ h3 {
   width: 2rem;
 }
 
-.notifications i {
+.notifications .material-icons {
   transition: transform 0.2s ease;
   font-size: 18px;
   transform: rotate(-30deg);
@@ -84,7 +84,7 @@ h3 {
   background: #eee;
 }
 
-.menu-list-item:hover i {
+.menu-list-item:hover .material-icons {
   cursor: pointer;
 }
 

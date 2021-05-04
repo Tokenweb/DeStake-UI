@@ -60,12 +60,12 @@
   opacity: 1;
 }
 
-.copyable-address i {
+.copyable-address material-icons {
   font-size: 14px;
   padding-left: 0.25rem;
 }
 
-.copyable-address .icon-container i.success {
+.copyable-address .icon-container .success {
   color: var(--success);
 }
 

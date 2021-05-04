@@ -1,3 +1,5 @@
+import { string } from "yup"
+
 export interface Indexer {
   id: string
   stakedTokens: string
@@ -58,4 +60,56 @@ export interface StakeView extends Stake {
   shareAmountDisplay: string
   stakedTokensDisplay: string
   unstakedTokensDisplay: string
+}
+
+export interface DelegatorTotals {
+  id: string
+  totalStakedTokens: string
+  totalUnstakedTokens: string
+  totalRealizedRewards: string
+}
+
+export interface DelegatorTotalsView extends DelegatorTotals {
+  totalStakedTokensDisplay: string
+  totalUnstakedTokensDisplay: string
+  totalRealizedRewardsDisplay: string
+}
+
+export interface CuratorTotals {
+  id: string
+  totalSignalledTokens: string
+  totalUnsignalledTokens: string
+  totalWithdrawnTokens: string
+  realizedRewards: string
+  annualizedReturn: string
+  totalReturn: string
+}
+
+interface CuratorTotalsView extends CuratorTotals {
+  totalSignalledTokensDisplay: string
+  totalUnsignalledTokensDisplay: string
+  totalWithdrawnTokensDisplay: string
+  realizedRewardsDisplay: string
+  annualizedReturnDisplay: string
+  totalReturnDisplay: string
+}
+
+export interface GraphAccount {
+  id: string
+  balance: string
+  curationApproval: string
+  stakingApproval: string
+  gnsApproval: string
+  delegator: DelegatorTotals
+  curator: CuratorTotals
+}
+
+export interface GraphAccountView extends Omit<GraphAccount, "curator" | "developer"> {
+  address: string
+  balanceDisplay: string
+  curationApprovalDisplay: string
+  stakingApprovalDisplay: string
+  gnsApprovalDisplay: string
+  delegator: DelegatorTotalsView
+  curator: CuratorTotalsView
 }

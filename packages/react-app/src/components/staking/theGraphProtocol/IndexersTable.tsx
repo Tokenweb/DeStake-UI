@@ -21,7 +21,7 @@ const SORT_STATE = {
 }
 
 const PAGINATION_STATE = {
-  first: 7,
+  first: 20,
   skip: 0
 }
 

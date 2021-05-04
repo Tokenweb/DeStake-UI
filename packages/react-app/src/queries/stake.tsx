@@ -1,5 +1,3 @@
-
-
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import selectUserStakesForTopic from '../selectors/stake';
@@ -29,6 +27,7 @@ interface User {
   id: string
   stakes: [Stake]
 }
+
 interface GetUserStakeData {
   user: User
 }

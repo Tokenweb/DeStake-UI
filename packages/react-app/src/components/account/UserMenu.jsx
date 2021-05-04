@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { MdNotifications } from 'react-icons/md'
+import { MdNotifications, MdBuild, MdExitToApp, MdAddCircle } from 'react-icons/md'
 import { WalletContext } from '../providers/WalletProvider'
 import UserAccountRow from './UserAccountRow'
 import UserMenuAddress from './UserMenuAddress'
@@ -32,14 +32,14 @@ const ModalContent = ({user, addresses, closeModal, signIn, signOut}) => {
         className="menu-list-item"
       >
         <span>Add an address</span>
-        <i className="material-icons">add_circle</i>
+        <MdAddCircle className="material-icons" />
       </div>
       <div
         id="manage-accounts"
         className="menu-list-item"
       >
         <span>Manage Addresses</span>
-        <i className="material-icons">build</i>
+        <MdBuild className="material-icons" />
       </div>
       { user && user.userSignedIn ? 
         <div>
@@ -61,7 +61,7 @@ const ModalContent = ({user, addresses, closeModal, signIn, signOut}) => {
             onClick={signOut}
           >
             <span>Logout</span>
-            <i className="material-icons">exit_to_app</i>
+            <MdExitToApp className="material-icons" />
           </div>
         </div>
       :
