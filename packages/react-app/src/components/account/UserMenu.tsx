@@ -1,11 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { MdNotifications } from 'react-icons/md';
 import { WalletContext } from '../providers/WalletProvider';
 import UserMenuAddress from './UserMenuAddress';
 import Avatar from '../common/Avatar';
 import Web3Modal from './Web3Modal';
 import './UserMenu.scoped.css';
+
+const buttonStyles: React.CSSProperties = {
+  padding: '10px',
+  borderRadius: '5px',
+  background: 'black',
+  color: 'white',
+  textAlign: 'center',
+  fontSize: '16px',
+  cursor: 'pointer',
+};
 
 const UserMenu: React.FC<{
   user?: any;
@@ -30,32 +38,33 @@ const UserMenu: React.FC<{
       {address ? (
         <UserMenuAddress address={address} sessionType={sessionType} />
       ) : (
-        <div>Sign In</div>
+        <button style={buttonStyles}>Sign In</button>
       )}
-      <Link
+      {/* <Link
         to='/notifications'
         className='user-menu-icon-container notifications'
       >
         <MdNotifications className='material-icons' />
-      </Link>
-      <div className='avatar-container'>
-        {user && (
+      </Link> */}
+      {user && (
+        <div className='avatar-container'>
           <span className='user-menu-icon-container tooltip-target'>
             <i className='material-icons'>person</i>
           </span>
-        )}
-        {user && (
+
           <Avatar
             alt=''
             className='avatar tooltip-target'
             address={user ? user.email : ''}
             human={true}
           />
-        )}
-      </div>
-      {showModal ? (
-        <Web3Modal onConnect={onConnect} /> // <Modal content={<ModalContent addresses={[]} />} isOpen={true} close={() => setShowModal(false)} />
-      ) : null}
+        </div>
+      )}
+      <Web3Modal
+        showModal={showModal}
+        onConnect={onConnect}
+        setWalletModal={setShowModal}
+      />
     </div>
   );
 };
