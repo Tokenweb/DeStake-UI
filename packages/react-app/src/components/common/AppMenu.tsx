@@ -5,24 +5,42 @@ import { MdChevronRight } from 'react-icons/md';
 import { WalletContext } from '../providers/WalletProvider';
 
 const AppMenu = () => {
-  const { address } = useContext(WalletContext);
+  const { address } = useContext(WalletContext) as any;
   return (
     <div>
       <menu className='app-menu'>
         <div>
           {address != null ? (
-            <Link
-              to={`/portfolio/${address}`}
-              className='app-menu-item hide-s'
-              title='Portfolio'
-            >
-              <h2 className='app-menu-title'>Portfolio</h2>
-              <span className='material-icons notranslate'>
-                <MdChevronRight />
-              </span>
-            </Link>
+            <>
+              <Link
+                to={`/portfolio/${address}`}
+                className='app-menu-item hide-s'
+                title='Portfolio'
+              >
+                <h2 className='app-menu-title'>Portfolio</h2>
+                <span className='material-icons notranslate'>
+                  <MdChevronRight />
+                </span>
+              </Link>
+              <Link
+                to={`/staking`}
+                className='app-menu-item hide-s'
+                title='Staking'
+              >
+                <h2 className='app-menu-title'>Staking</h2>
+                <span className='material-icons notranslate'>
+                  <MdChevronRight />
+                </span>
+              </Link>
+            </>
           ) : null}
-          <Link
+          <Link to={`/`} className='app-menu-item hide-s' title='Overview'>
+            <h2 className='app-menu-title'>Overview</h2>
+            <span className='material-icons notranslate'>
+              <MdChevronRight />
+            </span>
+          </Link>
+          {/* <Link
             to={`/validators`}
             className='app-menu-item hide-s'
             title='Validators'
@@ -52,7 +70,7 @@ const AppMenu = () => {
             <span className='material-icons notranslate'>
               <MdChevronRight />
             </span>
-          </Link>
+          </Link> */}
 
           <Link to='/about' className='app-menu-item hide-m' title='About'>
             <h2 className='app-menu-title'>About</h2>

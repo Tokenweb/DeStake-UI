@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import AppPage from '../common/AppPage';
 import { WalletContext } from '../providers/WalletProvider';
 
@@ -14,7 +15,19 @@ const overviewStyles = {
   alignItems: 'center',
 };
 
-const Overview = () => {
+const buttonStyle = {
+  padding: 10,
+  minWidth: '50px',
+  textAlign: 'center',
+  textTransform: 'uppercase',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  background: 'black',
+  color: 'white',
+  margin: '10px 0',
+};
+
+const Overview = ({ history }) => {
   const { address } = useContext(WalletContext);
 
   return (
@@ -35,10 +48,13 @@ const Overview = () => {
           <p style={{ marginTop: '10px', fontSize: '18px' }}>
             sGRT Balance: 150 sGRT
           </p>
+          <button style={buttonStyle} onClick={() => history.push('/staking')}>
+            Stake/Unstake
+          </button>
         </div>
       )}
     </AppPage>
   );
 };
 
-export default Overview;
+export default withRouter(Overview);
