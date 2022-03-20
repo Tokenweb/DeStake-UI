@@ -1,20 +1,19 @@
-
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { theGraphNetworkClient } from '../utils/apolloClient'
+import { theGraphNetworkClient } from '../utils/apolloClient';
 import { GraphAccount } from '../types/theGraphProtocol';
 import { selectGraphAccount } from '../selectors/graphAccount';
 
 interface GetGraphAccount {
-  graphAccount: GraphAccount
+  graphAccount: GraphAccount;
 }
 
 interface GraphAccountQueryVars {
-  address: string
+  address: string;
 }
 
-export const GET_GRAPH_ACCOUNT  = gql`
-  query tag($address: String!){
+export const GET_GRAPH_ACCOUNT = gql`
+  query tag($address: String!) {
     graphAccount(id: $address) {
       id
       balance
@@ -38,22 +37,26 @@ export const GET_GRAPH_ACCOUNT  = gql`
       }
     }
   }
-`
+`;
 
 export const useGetGraphAccount = (address: string) => {
-  address = address.split('').map(f => f.toLowerCase()).join('')
-  const {loading, error, data} = useQuery<GetGraphAccount, GraphAccountQueryVars>(
-    GET_GRAPH_ACCOUNT,
-    {
-      client: theGraphNetworkClient,
-      variables: { address },
-      fetchPolicy: 'no-cache'
-    });
+  const lowerAddress = address
+    .split('')
+    .map((f) => f.toLowerCase())
+    .join('');
+  const { loading, error, data } = useQuery<
+    GetGraphAccount,
+    GraphAccountQueryVars
+  >(GET_GRAPH_ACCOUNT, {
+    client: theGraphNetworkClient,
+    variables: { address: lowerAddress },
+    fetchPolicy: 'no-cache',
+  });
+  console.log(data);
   return {
     loading,
     error,
     // @ts-ignore
-    account: data ? selectGraphAccount(data.graphAccount) : null
-  } 
-}
- 
+    account: data?.graphAccount ? selectGraphAccount(data.graphAccount) : null,
+  };
+};
